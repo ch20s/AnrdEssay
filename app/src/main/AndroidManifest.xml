@@ -7,5 +7,45 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".anrd_activity.WizardActivity">
+        </activity>
+        <activity android:name=".anrd_activity.BinderServiceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--.S.E.R.V.I.C.E-->
+        <!--为了确保应用的安全性，请始终使用显式 Intent 启动或绑定 Service，且不要为服务声明 Intent 过滤器。-->
+        <!--enabled : -->
+        <!--exported : 通过添加 android:exported 属性并将其设置为 "false"，确保服务仅适用于您的应用。
+        这可以有效阻止其他应用启动您的服务，即便在使用显式 Intent 时也如此-->
+        <service
+            android:name=".anrd_service.localservice.BasicLocalService_START_NOT_STICKY"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".anrd_service.localservice.BasicLocalService_START_STICKY"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".anrd_service.localservice.BasicLocalService_START_REDELIVER_INTENT"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".anrd_service.localservice.localbindservice.BasicLocalBindLocalService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".anrd_service.localservice.localbindservice.BasicLocalBindMessageService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remoteservice"></service>
+        <service
+            android:name=".anrd_service.localservice.localbindservice.BasicLocalBindAidlService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remoteaidlservice"></service>
+    </application>
 </manifest>
